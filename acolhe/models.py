@@ -21,7 +21,7 @@ class Anfitriao(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='anfitriao')
     nome = models.CharField(max_length=120)
     contato = models.CharField(max_length=11)
-    local = models.
+    # local 
     # fotinha
     # email
 
