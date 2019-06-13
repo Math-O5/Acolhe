@@ -4,5 +4,22 @@
     <h1>HOMEPAGE ANFITRIAO LOGADO</h1>
     <h2>Olá, {{ request.user.anfitriao.nome }}</h2>
     
-    <p>This is a template</p>
+	<p>Os seus locais já cadastrados são:</p>
+
+	<div class="card list-group">
+	{% for local in local_list %}
+		<div class="card-body list-group-item">
+    		<p class="card-title">Cidade:{{ local.cidade }}</p>
+    		<p>Bairro: {{ local.bairro }}</p>
+    		<p>Enrereço: {{ local.rua }} - {{ local.numero }}</p>
+    		<p>Status: {{ local.status }}</p>
+		</div>
+	{% endfor %}
+	</div>
+
+
+
+	<a href="{% url 'cadastrar_local' %}" class="btn btn-primary px-2 my-4" role="button">Cadastrar um novo <strong>local</strong></a>
+
 {% endblock %}
+

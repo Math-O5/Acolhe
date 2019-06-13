@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-6">
+                {{ local_form.cidade|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ local_form.bairro|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ local_form.rua|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ local_form.numero|as_crispy_field }}
+            </div>
+        </div>
+		{{ local_form.descricao|as_crispy_field }}
+        <div class="row">
+            <div class="col-6">
+				{{ local_form.vagas|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ local_form.status|as_crispy_field }}
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
+    </form>
+{% endblock %}

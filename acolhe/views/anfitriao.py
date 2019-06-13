@@ -1,11 +1,18 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
-from .forms import UserForm, AnfitriaoLoginForm
+from .forms import UserForm, AnfitriaoLoginForm, LocalForm
+from ..models import Local, Anfitriao, User
 
 # Create your views here.
 def home_anfitriao(request):    
-    if request.user.is_authenticated and request.user.is_anfitriao:
-        return render(request, "anfitriao/home.html")
+	local_list = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome)
+
+	context = {
+		'local_list': local_list,
+	}
+
+	if request.user.is_authenticated and request.user.is_anfitriao:
+		return render(request, "anfitriao/home.html", context)
 
 def cadastrar_view(request):
     user_form = UserForm(request.POST or None)
@@ -39,3 +46,24 @@ def cadastrar_view(request):
     }
 
     return render(request, 'anfitriao_form.html', context)
+
+def cadastrar_local_view(request):
+	local_form = LocalForm(request.POST or None)
+
+	if request.method == 'POST':
+		local_form = LocalForm(request.POST)
+
+		if local_form.is_valid():
+			local = local_form.save(commit=False)
+			local.anfitriao = request.user.anfitriao
+			local.save()
+
+			return redirect('home_anfitriao')
+	else:
+		local_form = LocalForm(None)
+
+	context = {
+		'local_form': local_form,
+	}
+
+	return render(request, 'local_form.html', context)

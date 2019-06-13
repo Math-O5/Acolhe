@@ -1,6 +1,7 @@
 from django.contrib import admin
-from .models import Acolhido
+from .models import User, Acolhido, Anfitriao, Local
 
-@admin.register(Acolhido)
-class AcolhidoAdmin(admin.ModelAdmin):
-    pass
+admin.site.register(User)
+admin.site.register(Acolhido)
+admin.site.register(Anfitriao)
+admin.site.register(Local)
