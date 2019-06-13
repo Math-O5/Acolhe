@@ -1,1 +1,8 @@
-home logado anfitriao
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>HOMEPAGE ANFITRIAO LOGADO</h1>
+    <h2>Olá, {{ request.user.anfitriao.nome }}</h2>
+    
+    <p>This is a template</p>
+{% endblock %}

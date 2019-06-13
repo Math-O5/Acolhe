@@ -18,12 +18,21 @@ class Acolhido(models.Model):
 	# fotinha
     # email
 
+class Anfitriao(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='anfitriao')
+    nome = models.CharField(max_length=120)
+    contato = models.CharField(max_length=11)
+    # local
+    # fotinha
+    # email
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
 	print('****', created)
 	if instance.is_acolhido:
 		Acolhido.objects.get_or_create(user = instance)
+	elif instance.is_anfitriao:
+		Anfitriao.objects.get_or_create(user = instance)
     
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
@@ -31,3 +40,5 @@ def save_user_profile(sender, instance, **kwargs):
 	# print(instance.internprofile.bio, instance.internprofile.location)
 	if instance.is_acolhido:
 		instance.acolhido.save()
+	if instance.is_anfitriao:
+		instance.anfitriao.save()

@@ -3,7 +3,7 @@
 
     {% if user.is_authenticated %}
         <div class="d-flex form-inline">
-            <p class="mr-auto p-2">Logged in as <strong>{{ user.username }}</strong>
+            <p class="mr-auto p-2">Logado como <strong>{{ user.username }}</strong>
             <form class='p-2' action={% url 'logout' %} method='post'>
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>
@@ -11,8 +11,9 @@
         </div>
     {% else %}
         <div class="d-flex form-inline">
-            <a href="{% url 'login' %}" class="btn btn-light mr-auto p-2" role="button">Log in</a>
-            <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary p-2" role="button">Sign up</a>
+            <a href="{% url 'login' %}" class="btn btn-light mr-auto px-4 " role="button">Fazer login</a>
+            <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary mx-2" role="button">Receber ajuda</a>
+            <a href="{% url 'cadastrar_anfitriao' %}" class="btn btn-primary mx-2" role="button">Ofereça ajuda</a>
         </div>
     {% endif %}
 </nav>
