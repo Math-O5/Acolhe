@@ -1,10 +1,33 @@
 {% extends 'base.html' %}
 
+{% load crispy_forms_tags %}
+
 {% block content %}
     <form method="post">
-    {% csrf_token %}
-    {{ user_form.as_p }}
-    {{ profile_form.as_p }}
-    <button type="submit">Save changes</button>
+        {% csrf_token %}
+
+        <div class="row">
+            <div class="col-6">
+                {{ user_form.username|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ user_form.password|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                {{ profile_form.nome|as_crispy_field }}
+            </div>
+            <div class="col-6">
+                {{ profile_form.contato|as_crispy_field }}
+            </div>
+        </div>
+        {{ profile_form.descricao|as_crispy_field }}
+        {{ profile_form.vagas|as_crispy_field }}
+
+        {% comment %} {{ user_form.as_p }}
+        {{ profile_form.as_p }} {% endcomment %}
+        
+        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
     </form>
 {% endblock %}

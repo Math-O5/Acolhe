@@ -2,6 +2,7 @@
 
 {% block content %}
     <h1>HOMEPAGE ACOLHIDO LOGADO</h1>
-
+    <h2>Olá, {{ request.user }}</h2>
+    <h3>{{ request.user.is_acolhido }}</h3>
     <p>This is a template</p>
 {% endblock %}

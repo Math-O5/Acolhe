@@ -2,8 +2,7 @@
 <html>
     <head>
         <title>{% block title %}Acolhe{% endblock %}</title>
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         {% if user.is_authenticated and user.is_teacher %}
@@ -13,22 +12,13 @@
         {% endif %}
     </head>
     <body>
-        <div>
-            <div>
-                {% if user.is_authenticated %}
-                    <p>Logged in as <strong>{{ user.username }}</strong>
-                    <form class='logout-link' action={% url 'logout' %} method='post'>
-                        {% csrf_token %}
-                        <button type="submit">Logout</button>
-                    </form>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn btn-light" role="button">Log in</a>
-                    <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary" role="button">Sign up</a>
-                {% endif %}
+        {% include 'navbar.html' %}
+        
+        <div class="mt-5 mx-5">
+            {% block content  %}
                 <h1> This is a test base </h1>
-                {% block content %}
-                {% endblock %}
-            </div>
+            {% endblock %}
         </div>
+
     </body>
 </html>

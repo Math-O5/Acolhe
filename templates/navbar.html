@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light bg-light px-5">
+    <a class="navbar-brand" href="{% url 'home' %}">Acolhe</a>
+
+    {% if user.is_authenticated %}
+        <div class="d-flex form-inline">
+            <p class="mr-auto p-2">Logged in as <strong>{{ user.username }}</strong>
+            <form class='p-2' action={% url 'logout' %} method='post'>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    {% else %}
+        <div class="d-flex form-inline">
+            <a href="{% url 'login' %}" class="btn btn-light mr-auto p-2" role="button">Log in</a>
+            <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary p-2" role="button">Sign up</a>
+        </div>
+    {% endif %}
+</nav>
