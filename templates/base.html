@@ -16,10 +16,14 @@
         <div>
             <div>
                 {% if user.is_authenticated %}
-                    <p>Logged in as <strong>{{ user.username }}</strong>. <a href="{% url 'logout' %}">Log out</a>.</p>
+                    <p>Logged in as <strong>{{ user.username }}</strong>
+                    <form class='logout-link' action={% url 'logout' %} method='post'>
+                        {% csrf_token %}
+                        <button type="submit">Logout</button>
+                    </form>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn btn-light" role="button">Log in</a>
-                    <a href="{% url 'registrar' %}" class="btn btn-primary" role="button">Sign up</a>
+                    <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary" role="button">Sign up</a>
                 {% endif %}
                 <h1> This is a test base </h1>
                 {% block content %}

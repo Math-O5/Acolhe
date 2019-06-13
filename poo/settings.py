@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'crispy_forms',
     'acolhe',
 ]
 
@@ -57,7 +56,10 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-		os.path.join(BASE_DIR, 'templates')
+		    os.path.join(BASE_DIR, 'templates'),
+            os.path.join(BASE_DIR, 'acolhe/templates'),
+            os.path.join(BASE_DIR, 'acolhe/templates/acolhido'),
+            os.path.join(BASE_DIR, 'acolhe/templates/anfitriao'),
 	    ],
         'APP_DIRS': True,
         'OPTIONS': {
