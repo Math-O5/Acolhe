@@ -15,10 +15,15 @@
     font-family: "Arial";
     font-weight: bold;
     font-size: 15px;
-    color: #ffffff;
+	color: #ffffff;
+	text-decoration: none;
 }
 
 .navbar-custom {
     background-color: rgb(85, 187, 127);
 }
 
+.no-style {
+	color: inherit;
+	text-decoration: none;
+}

@@ -11,7 +11,16 @@
 
     {% if user.is_authenticated %}
         <div class="d-flex form-inline">
-            <p class="mr-auto p-2">Logado como <strong>{{ user.username }}</strong>
+            <p class="mr-auto p-2">Logado como 
+				<strong>
+					{% if user.is_acolhido %}
+						<a class="no-style"  href="{% url 'acolhido:home_acolhido' %}">{{ user.username }}</a>
+					{% endif %}
+					{% if user.is_anfitriao %}
+						<a href="{% url 'anfitriao:home_anfitriao' %}">{{ user.username }}</a>
+					{% endif %}
+				</strong>
+			</p>
             <form class='p-2' action={% url 'logout' %} method='post'>
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Logout</button>
