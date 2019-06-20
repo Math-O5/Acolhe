@@ -1,30 +1,41 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-
+<link rel="stylesheet" href="{% static 'css/home.css' %}"/>
 {% if not user.is_authenticated %}
-<div class="row">
-        <div class="card text-center bg-info mb-3" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
-            <div class="card-body">
-                <h5 class="card-title">Seja um acolhido</h5>
-                <p class="card-text">Estou precisando de um lugar para ficar</p>
-                <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
-            </div>
-        </div>
-        <div class="card text-center bg-info mb-3" style="width: 18rem;">
-            <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
-            <div class="card-body">
-                <h5 class="card-title">Seja um anfitrião</h5>
-                <p class="card-text">Quero ajudar pessoas</p>
-                <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark mx-2" role="button">Ofereça ajuda</a>
+<div class="inicio">
+        <div class="col card-deck">
+            <div class="row mx-auto">
+                <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
+                    <img class="card-img-top" src="{% static 'img/acolhido.png' %}" alt="Imagem de capa do card"  width="400" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Seja um acolhido</h5>
+                        <p class="card-text">Estou precisando de um lugar para ficar</p>
+                        <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
+                    </div>
+                </div>
+                <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
+                    <img class="card-img-top" src="{% static 'img/anfitriao.jpg' %}" alt="Imagem de capa do card"  width="400" height="200">
+                    <div class="card-body">
+                        <h5 class="card-title">Seja um anfitrião</h5>
+                        <p class="card-text">Quero ajudar pessoas e oferecer acolhimento. </p>
+                        <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark mx-2" role="button">Ofereça ajuda</a>
+                    </div>
+                </div>
             </div>
         </div>
 </div>
 {% endif %}
 
-<h1>home sem estar logado</h1>
+<div><h1>Ultimos locais</h1></div>
+<div class="card-deck">
+    <p>Acompanhe as ultimas postagem</p>
 
+    <div class="card-footer">
+        <small style="color:black">Atualizados 3 minutos atrás</small>
+    </div>
+</div>
 <small class="text-muted"><p>Encontre um lugar para se instalar</p></small>
 <p class="lead">
     Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
