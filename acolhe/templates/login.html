@@ -4,7 +4,7 @@
 
 {% block content %}
     <h1>Log in</h1>
-    <form action="{% url 'login'%}" method="post">
+    <form action="{% url 'acolhido:login'%}" method="post">
         {% csrf_token %}
         {{ form|crispy }}
         <input type="submit" value="Login" class="btn btn-primary mt-4">
