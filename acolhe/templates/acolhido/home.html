@@ -33,14 +33,21 @@
 
 
 	<div class="mt-5">
-		<h1>Locais disponívies</h1>
-
-		{% if not local_list %}	
+		<div class="row">
+			<h2 class="col-5">Locais disponívies</h2>
+            <form method="get" class="col-6 row">
+				<input class="form-control col-8" placeholder="Digite a cidade que deseja" name="search">
+				<input type="submit" value="Pesquisar" class="btn btn-light col-4">
+			</form>
+			
+        </div>
+	
+		{% if not local_disponivel %}	
 			<h2>No momento não há lugares disponíveis</h2>
 		{% endif %}
 
 		<div class="card list-group">
-		{% for local in local_list %}
+		{% for local in local_disponivel %}
 			<div class="card-body list-group-item">
 				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
 				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
@@ -52,8 +59,6 @@
 			</div>
 		{% endfor %}
 		</div>
-
-
 
 	</div>
 

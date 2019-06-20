@@ -4,11 +4,15 @@ from .forms import UserForm, AcolhidoLoginForm, Local, Anfitriao
 
 # Create your views here.
 def home_acolhido(request):
-	local_list = Local.objects.filter(status="DISPONIVEL")
+	local_disponivel = Local.objects.filter(status="DISPONIVEL")
 	local_solicitado = Local.objects.filter(acolhido=request.user.acolhido)
 
+	if request.GET.get('search'):
+		search = request.GET.get('search')
+		local_disponivel = Local.objects.filter(status="DISPONIVEL", cidade=search) 
+
 	context = {
-		'local_list': local_list,
+		'local_disponivel': local_disponivel,
 		'local_solicitado': local_solicitado,
 	}
 
