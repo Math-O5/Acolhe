@@ -5,14 +5,17 @@ from ..models import Local, Anfitriao, User
 
 # Create your views here.
 def home_anfitriao(request):    
-	local_list = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome)
+	local_disponivel = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="DISPONIVEL")
+	local_ocupado = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="OCUPADO")
 
 	context = {
-		'local_list': local_list,
+		'local_disponivel': local_disponivel,
+		'local_ocupado': local_ocupado,
 	}
 
 	if request.user.is_authenticated and request.user.is_anfitriao:
 		return render(request, "anfitriao/home.html", context)
+		
 
 def cadastrar_view(request):
     user_form = UserForm(request.POST or None)
@@ -67,3 +70,4 @@ def cadastrar_local_view(request):
 	}
 
 	return render(request, 'local_form.html', context)
+

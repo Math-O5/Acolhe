@@ -1,11 +1,19 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
-from .forms import UserForm, AcolhidoLoginForm
+from .forms import UserForm, AcolhidoLoginForm, Local, Anfitriao
 
 # Create your views here.
 def home_acolhido(request):
-    if request.user.is_authenticated and request.user.is_acolhido:
-        return render(request, "acolhido/home.html")
+	local_list = Local.objects.filter(status="DISPONIVEL")
+	local_solicitado = Local.objects.filter(acolhido=request.user.acolhido)
+
+	context = {
+		'local_list': local_list,
+		'local_solicitado': local_solicitado,
+	}
+
+	if request.user.is_authenticated and request.user.is_acolhido:
+		return render(request, "acolhido/home.html", context)
 
 def cadastrar_view(request):
     user_form = UserForm(request.POST or None)

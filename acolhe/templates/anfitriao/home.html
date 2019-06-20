@@ -1,22 +1,57 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>HOMEPAGE ANFITRIAO LOGADO</h1>
-    <h2>Olá, {{ request.user.anfitriao.nome }}</h2>
+    <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
     
-	<p>Os seus locais já cadastrados são:</p>
+	{% if local_ocupado %}
+	<div>
+		<h1>Locais solicitados:</h1>
 
-	<div class="card list-group">
-	{% for local in local_list %}
-		<div class="card-body list-group-item">
-    		<p class="card-title">Cidade:{{ local.cidade }}</p>
-    		<p>Bairro: {{ local.bairro }}</p>
-    		<p>Enrereço: {{ local.rua }} - {{ local.numero }}</p>
-    		<p>Status: {{ local.status }}</p>
+		<div class="card list-group">
+		{% for local in local_ocupado %}
+			<div class="card-body list-group-item">
+				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+				<p><strong>Status:</strong> {{ local.status }}</p>
+				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+
+				{% if local.status == "OCUPADO" %}
+				<div class="card-body py-0">
+					<p><strong>Nome do solicitante:</strong> {{ local.acolhido.nome }}</p>
+					<p><strong>Contato do solicitante:</strong> {{ local.acolhido.contato }}</p>
+					<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
+					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Mudar status para disponível</a>
+				</div>
+				{% endif %}
+			</div>
+		{% endfor %}
 		</div>
-	{% endfor %}
-	</div>
 
+	</div>
+	{% endif %}
+
+	<div class="mt-5">
+		<h1>Locais disponívies</h1>
+
+		{% if not local_disponivel %}	
+			<h2>No momento não há lugares disponíveis cadastrados</h2>
+		{% endif %}
+
+		<div class="card list-group">
+		{% for local in local_disponivel %}
+			<div class="card-body list-group-item">
+				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+			</div>
+		{% endfor %}
+		</div>
+
+
+
+	</div>
 
 
 	<a href="{% url 'cadastrar_local' %}" class="btn btn-primary px-2 my-4" role="button">Cadastrar um novo <strong>local</strong></a>

@@ -26,7 +26,8 @@ class Anfitriao(models.Model):
     # email
 
 class Local(models.Model):
-	anfitriao = models.ForeignKey(Anfitriao, on_delete=models.CASCADE)
+	anfitriao = models.ForeignKey(Anfitriao, on_delete=models.CASCADE, related_name='anfitriao')
+	acolhido = models.ForeignKey(Acolhido, on_delete=models.SET_NULL, null=True, related_name='anfitriao')
 	cidade = models.CharField(max_length=120)
 	bairro = models.CharField(max_length=120)
 	rua = models.CharField(max_length=120)
