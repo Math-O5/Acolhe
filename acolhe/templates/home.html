@@ -4,7 +4,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
 {% if not user.is_authenticated %}
-<div class="inicio">
+<div class="inicio pt-5">
         <div class="col card-deck">
             <div class="row mx-auto">
                 <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Seja um acolhido</h5>
                         <p class="card-text">Estou precisando de um lugar para ficar</p>
-                        <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
+                        <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark btn-block" role="button">Receber ajuda</a>
                     </div>
                 </div>
                 <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
@@ -20,7 +20,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Seja um anfitrião</h5>
                         <p class="card-text">Quero ajudar pessoas e oferecer acolhimento. </p>
-                        <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark mx-2" role="button">Ofereça ajuda</a>
+                        <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark  btn-block" role="button">Ofereça ajuda</a>
                     </div>
                 </div>
             </div>
