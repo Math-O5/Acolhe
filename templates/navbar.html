@@ -12,8 +12,8 @@
     {% else %}
         <div class="d-flex form-inline">
             <a href="{% url 'login' %}" class="btn btn-light mr-auto px-4 " role="button">Fazer login</a>
-            <a href="{% url 'cadastrar_acolhido' %}" class="btn btn-primary mx-2" role="button">Receber ajuda</a>
-            <a href="{% url 'cadastrar_anfitriao' %}" class="btn btn-primary mx-2" role="button">Ofereça ajuda</a>
+            <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-primary mx-2" role="button">Receber ajuda</a>
+            <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-primary mx-2" role="button">Ofereça ajuda</a>
         </div>
     {% endif %}
 </nav>
