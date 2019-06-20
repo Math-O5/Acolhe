@@ -1,11 +1,12 @@
 {% load static %}
 
-<nav class="navbar navbar-light bg-light px-5">
-    <link rel="shortcut icon" href="static/img/guardar_logo_zjs_icon.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="static/css/navbar.css"/>
-    <a class="navbar-brand" href="{% url 'home' %}">
-        <img src="static/img/guardar_logo.png" width=50 height=40>
-         Acolhe
+<nav class="navbar navbar-light px-5 navbar-custom ">
+    <link rel="shortcut icon" href="{% static 'img/guardar_logo_zjs_icon.ico' %}" type="image/x-icon" />
+    <link rel="stylesheet" href="{% static 'css/navbar.css' %}"/>
+
+    <a class="navbar-brand " href="{% url 'home' %}">
+        <font>  <img src="{% static 'img/guardar_logo.png' %}" width=50 height=40>Acolhe 
+        </font>
     </a>
 
     {% if user.is_authenticated %}

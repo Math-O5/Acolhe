@@ -1,5 +1,24 @@
-a {
-    font-family: "New Century Schoolbook";
-    font-weight: bold;
-    font-size: 50px;
+@font-face {
+    font-family: 'ao';
+    src: url('../font/RWAFriendish-Regular.otf');
+    font-weight: normal;
+    font-style: normal;
 }
+
+.navbar font {
+    font-family: "ao";
+    font-weight: bold;
+    font-size: 35px;
+    color: #ffffff;  
+}
+.navbar a {
+    font-family: "Arial";
+    font-weight: bold;
+    font-size: 15px;
+    color: #ffffff;
+}
+
+.navbar-custom {
+    background-color: rgb(85, 187, 127);
+}
+
