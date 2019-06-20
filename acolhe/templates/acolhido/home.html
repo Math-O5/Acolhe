@@ -22,6 +22,7 @@
 					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
 					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
 					<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Cancelar solicitação</a>
 				</div>
 
@@ -35,7 +36,7 @@
 	<div class="mt-5">
 		<div class="row">
 			<h2 class="col-5">Locais disponívies</h2>
-            <form method="get" class="col-6 row">
+            <form method="get" class="col-7 row">
 				<input class="form-control col-8" placeholder="Digite a cidade que deseja" name="search">
 				<input type="submit" value="Pesquisar" class="btn btn-light col-4">
 			</form>
@@ -52,6 +53,7 @@
 				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
 				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+				<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
 				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
 				<a class="btn btn-primary" href='../local/{{ local.id }}/ocupado'>Solicitar local</a>
