@@ -2,9 +2,9 @@
 
 {% block content %}
 
-{% if not user.is_authentic %}
+{% if not user.is_authenticated %}
 <div class="row">
-        <div class="card text-center bg-info mb-3" style="width: 30rem;">
+        <div class="card text-center bg-info mb-3" style="width: 18rem;">
             <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
             <div class="card-body">
                 <h5 class="card-title">Seja um acolhido</h5>
@@ -12,7 +12,7 @@
                 <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
             </div>
         </div>
-        <div class="card text-center bg-info mb-3" style="width: 30rem;">
+        <div class="card text-center bg-info mb-3" style="width: 18rem;">
             <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
             <div class="card-body">
                 <h5 class="card-title">Seja um anfitrião</h5>
