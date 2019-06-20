@@ -37,7 +37,7 @@ def cadastrar_view(request):
                 
             # log the user in
             login(request, user)
-            return redirect('home')
+            return redirect('anfitriao:home_anfitriao')
 
     else:
         user_form = UserForm(prefix='UF')
@@ -61,7 +61,7 @@ def cadastrar_local_view(request):
 			local.anfitriao = request.user.anfitriao
 			local.save()
 
-			return redirect('home_anfitriao')
+			return redirect('anfitriao:home_anfitriao')
 	else:
 		local_form = LocalForm(None)
 

@@ -9,9 +9,9 @@ class cadastrarView(TemplateView):
 def home_view(request):
 	if request.user.is_authenticated:
        		if request.user.is_anfitriao:
-            		return redirect('home_anfitriao')
+            		return redirect('anfitriao:home_anfitriao')
         	else:
-        	    return redirect('home_acolhido')
+        	    return redirect('acolhido:home_acolhido')
 	return render(request, 'home.html')
 
 def login_view(request):

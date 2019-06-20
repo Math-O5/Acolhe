@@ -37,7 +37,7 @@ def cadastrar_view(request):
                 
             # log the user in
             login(request, user)
-            return redirect('home')
+            return redirect('acolhido:home_acolhido')
 
     else:
         user_form = UserForm(prefix='UF')
