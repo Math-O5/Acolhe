@@ -38,13 +38,13 @@
 			<h2 class="col-5">Locais disponívies</h2>
             <form method="get" class="col-7 row">
 				<input class="form-control col-8" placeholder="Digite a cidade que deseja" name="search">
-				<input type="submit" value="Pesquisar" class="btn btn-light col-4">
+				<input type="submit" value="Pesquisar" class="btn btn-info col-4">
 			</form>
 			
         </div>
 	
 		{% if not local_disponivel %}	
-			<h2>No momento não há lugares disponíveis</h2>
+			<p class="h5 alert alert-danger">No momento não há lugares disponíveis</p>
 		{% endif %}
 
 		<div class="card list-group">
