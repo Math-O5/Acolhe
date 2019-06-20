@@ -12,13 +12,12 @@
     color: #ffffff;  
 }
 .navbar a {
-    font-family: "Arial";
+    font-family: "Calibri";
     font-weight: bold;
     font-size: 15px;
-    color: #ffffff;
 }
 
 .navbar-custom {
-    background-color: rgb(85, 187, 127);
+    background-color: rgb(85, 180, 187);
 }
 
