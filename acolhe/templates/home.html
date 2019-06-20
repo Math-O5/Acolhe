@@ -1,6 +1,28 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
+{% if not user.is_authentic %}
+<div class="row">
+        <div class="card text-center bg-info mb-3" style="width: 30rem;">
+            <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+            <div class="card-body">
+                <h5 class="card-title">Seja um acolhido</h5>
+                <p class="card-text">Estou precisando de um lugar para ficar</p>
+                <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
+            </div>
+        </div>
+        <div class="card text-center bg-info mb-3" style="width: 30rem;">
+            <img class="card-img-top" src=".../100px180/" alt="Imagem de capa do card">
+            <div class="card-body">
+                <h5 class="card-title">Seja um anfitrião</h5>
+                <p class="card-text">Quero ajudar pessoas</p>
+                <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark mx-2" role="button">Ofereça ajuda</a>
+            </div>
+        </div>
+</div>
+{% endif %}
+
 <h1>home sem estar logado</h1>
 
 <small class="text-muted"><p>Encontre um lugar para se instalar</p></small>
