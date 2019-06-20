@@ -1,0 +1,29 @@
+.card-columns {
+    display: inline-block;
+
+    @include media-breakpoint-only(lg) {
+      column-count: 4;
+    }
+    @include media-breakpoint-only(xl) {
+      column-count: 5;
+    }
+  }
+
+.card {
+    display: inline-block;
+}
+
+.inicio {
+    background-color: rgba(245, 168, 1, 0.89);
+    padding: 15px;
+    margin-top: 0;
+    margin-left: 0;
+    margin: 0;
+    margin-right: 0;
+    padding: 0;
+    box-shadow: 0px 6px 5px 0px rgba(0, 0, 0, 0.2)
+}
+.small {
+    color: white;
+
+}
