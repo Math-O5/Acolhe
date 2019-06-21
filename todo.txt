@@ -1,0 +1,5 @@
+- reltorio
+
+- add fotos e deixar mais semantico com o tema do projeto
+- deletar locais
+- add comentarios

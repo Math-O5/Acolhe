@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, AnfitriaoLoginForm, LocalForm
 from ..models import Local, Anfitriao, User
@@ -74,3 +74,12 @@ def cadastrar_local_view(request):
 
         return render(request, 'local_form.html', context)
 
+def remover_view(request, pk):
+    local = get_object_or_404(Local, pk=pk)
+    local.delete()
+    return redirect('anfitriao:home_anfitriao')
+
+def editar_view(request, pk):
+    local = get_object_or_404(Local, pk=pk)
+    local.delete()
+    
