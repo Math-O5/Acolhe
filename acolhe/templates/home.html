@@ -28,7 +28,7 @@
 </div>
 {% endif %}
 
-<div class="ultimos">
+<div class="ultimos h-90">
     <h1>Ultimos locais </h1> 
     <div class="row mx-auto">
     
@@ -51,8 +51,8 @@
     {% endfor %}
       
             {% if not local_disponivel %}
-                <p class="h5 alert-danger">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém em 
-                    <a href="{% url 'anfitriao:cadastrar_anfitriao' %}"></a>
+                <p class="h5 alert alert-dark" style="">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém  
+                    <a href="{% url 'anfitriao:cadastrar_anfitriao' %}">se cadastrando aqui</a>
                 </p>
             {% endif %}
     </div>
