@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/home.css' %}"/>
+<link rel="stylesheet" href="{% static 'css/login.css'%}"/>
 {% if not user.is_authenticated %}
 <div class="inicio pt-5">
         <div class="col card-deck">
@@ -41,7 +41,7 @@
                     <p class="card-text text-left" style=" border: 1px solid rgb(165, 165, 165);"><p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p></p></p>
                     <p class="text-left"> <p><strong>Bairro:</strong> {{ local.bairro }}</p></p>
                     <p class="text-left"><p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p></p>
-                    <p class="text-left""><p><strong>Status:</strong> {{ local.status }}</p></p>
+                    <p class="text-left"><p><strong>Status:</strong> {{ local.status }}</p></p>
                 </ul>
             <div class="card-footer">
             <small style="color:white">Atualizados {{ local.publicado_date }} </small>
@@ -49,12 +49,11 @@
         </div>
     </div>
     {% endfor %}
-      
-            {% if not local_disponivel %}
-                <p class="h5 alert alert-dark" style="">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém  
-                    <a href="{% url 'anfitriao:cadastrar_anfitriao' %}">se cadastrando aqui</a>
-                </p>
-            {% endif %}
+    {% if not local_disponivel %}
+        <p class="h5 alert alert-dark" style="">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém  
+            <a href="{% url 'anfitriao:cadastrar_anfitriao' %}">se cadastrando aqui</a>
+        </p>
+    {% endif %}
     </div>
 </div>
 

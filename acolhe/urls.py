@@ -14,11 +14,13 @@ urlpatterns = [
    path('local/<int:id>/cancelar', local.cancelar_view, name='local_cancelar'),
    path('local/<int:id>/aprovar', local.aprovar_view, name='local_disponivel'),
    path('local/<int:id>/disponivel', local.disponivel_view, name='local_disponivel'),
+   path('local/<int:id>/editar', local.editar_view, name='editar_view'),
 
    path('anfitriao/', include(([
       path('', anfitriao.home_anfitriao, name = 'home_anfitriao'),
       path('cadastrar', anfitriao.cadastrar_view, name='cadastrar_anfitriao'),
       path('local', anfitriao.cadastrar_local_view, name='cadastrar_local'),
+      path('local/<pk>/remover', anfitriao.remover_view, name='remover_view'),
    ], 'acolhe'),namespace='anfitriao')
    ),
 

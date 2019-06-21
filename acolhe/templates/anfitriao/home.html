@@ -1,8 +1,13 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
-    <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
-    
+	<link rel="stylesheet" href="{% static 'css/home.css'%}"/>
+	<div class="ultimos">
+		<h1 style="display: inline-flex; margin-left:0;" class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
+		<a  style=" margin-top:0;" href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-info px-2 my-4" role="button" style="margin-left:20px;"> novo <strong>local</strong></a>
+	</div>
+	
 	<div class="mt-5">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_aprovado">Locais aprovados</a>
 
@@ -69,23 +74,24 @@
 			<h2>No momento não há lugares disponíveis cadastrados</h2>
 		{% endif %}
 
-		<div class="card list-group">
 		{% for local in local_disponivel %}
+			<div class="card list-group">
 			<div class="card-body list-group-item">
-				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>	
 				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
 				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+				<a class="btn btn-info" href="{% url 'editar_view' id=local.id %}"><span class=" glyphicon glyphicon-pencil">Detalhes</span></a>
+				<a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove">Remover</span></a>
 			</div>
-		{% endfor %}
-		</div>
+			</div>
+			{% endfor %}
 
 
 
 	</div>
 
 
-	<a href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-primary px-2 my-4" role="button">Cadastrar um novo <strong>local</strong></a>
 
 {% endblock %}
 

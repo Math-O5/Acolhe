@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<h2>{{ local.title }}</h2>
+    <div class="post">
+        <div class="date">
+            {{ local.publicado_date }}
+        </div>
+        <p>{{ local.descricao|linebreaksbr }}</p>
+    </div>
+{% endblock %}
