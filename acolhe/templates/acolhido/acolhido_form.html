@@ -1,33 +1,55 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
+    <link rel="stylesheet" href="{% static 'css/login.css'%}"/>
+    <div style="background-color: rgba(253, 189, 51, 0.89); padding:20px;" class="h-100">
+        <form method="post">
+            {% csrf_token %}
 
-        <div class="row">
-            <div class="col-6">
-                {{ user_form.username|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ user_form.password|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {{ profile_form.nome|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ profile_form.contato|as_crispy_field }}
-            </div>
-        </div>
-        {{ profile_form.descricao|as_crispy_field }}
-        {{ profile_form.vagas|as_crispy_field }}
+            <div class="card text-center bg-light mx-auto login">
+            <div class="row">
+                <div class="col-12" class="col-12" style="margin-top:15px;">
+                    <strong>
+                        {{ user_form.username|as_crispy_field }}
+                    </strong>
+                        
+                </div>
+                <div class="col-12" class="col-12" style="margin-top:15px;">
+                    <strong>
+                        {{ user_form.password|as_crispy_field }}
+                    </strong>
+                </div>
+                <div class="col-12" style="margin-top:15px;">
+                    <strong>
+                        {{ profile_form.nome|as_crispy_field }}
+                    </strong>
+                </div>
+                <div class="col-12" style="margin-top:15px;">
+                    <strong>
+                        {{ profile_form.contato|as_crispy_field }}
+                    </strong>
+                </div>
+                <div   class="col-12" style="margin-top:15px;"">
+                    <strong>
+                        {{ profile_form.descricao|as_crispy_field }}
+                    </strong>
+                </div>
+                <div   class="col-12" style="margin-top:15px;"">
+                    <strong>
+                        {{ profile_form.vagas|as_crispy_field }}
+                    </strong>
+                </div>
 
-        {% comment %} {{ user_form.as_p }}
-        {{ profile_form.as_p }} {% endcomment %}
+            </div>
+            <button type="submit" class="btn btn-info mt-4">Save changes</button>
+          
         
-        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
-    </form>
+
+            {% comment %} {{ user_form.as_p }}
+            {{ profile_form.as_p }} {% endcomment %}
+            
+        </form>
+    </div>
 {% endblock %}
