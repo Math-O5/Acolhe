@@ -14,7 +14,7 @@ urlpatterns = [
    path('local/<int:id>/cancelar', local.cancelar_view, name='local_cancelar'),
    path('local/<int:id>/aprovar', local.aprovar_view, name='local_disponivel'),
    path('local/<int:id>/disponivel', local.disponivel_view, name='local_disponivel'),
-   path('local/<int:id>/editar', local.editar_view, name='editar_view'),
+   path('local/<int:id>/detalhes', local.detalhes_view, name='detalhes_view'),
 
    path('anfitriao/', include(([
       path('', anfitriao.home_anfitriao, name = 'home_anfitriao'),

@@ -79,7 +79,7 @@ def remover_view(request, pk):
     local.delete()
     return redirect('anfitriao:home_anfitriao')
 
-def editar_view(request, pk):
+def detalhes_view(request, pk):
     local = get_object_or_404(Local, pk=pk)
     local.delete()
     
