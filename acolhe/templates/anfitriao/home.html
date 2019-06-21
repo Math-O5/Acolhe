@@ -3,27 +3,54 @@
 {% block content %}
     <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
     
-	{% if local_ocupado %}
+	{% if local_aprovado %}
 	<div>
-		<h1>Locais solicitados:</h1>
+		<h1>Locais aprovados:</h1>
 
 		<div class="card list-group">
-		{% for local in local_ocupado %}
+		{% for local in local_aprovado %}
 			<div class="card-body list-group-item">
 				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
 				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
 				<p><strong>Status:</strong> {{ local.status }}</p>
 				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+				<p><strong>Status (dlt dps):</strong> {{ local.status }}</p>
 
-				{% if local.status == "OCUPADO" %}
+				<div class="card-body py-0">
+					<p><strong>Nome do ocupante:</strong> {{ local.acolhido.nome }}</p>
+					<p><strong>Contato do ocupante:</strong> {{ local.acolhido.contato }}</p>
+					<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
+					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar aprovação</a>
+				</div>
+			</div>
+		{% endfor %}
+		</div>
+
+	</div>
+	{% endif %}
+
+	{% if local_solicitado %}
+	<div>
+		<h1>Locais solicitados:</h1>
+
+		<div class="card list-group">
+		{% for local in local_solicitado %}
+			<div class="card-body list-group-item">
+				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+				<p><strong>Status:</strong> {{ local.status }}</p>
+				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+				<p><strong>Status (dlt dps):</strong> {{ local.status }}</p>
+
 				<div class="card-body py-0">
 					<p><strong>Nome do solicitante:</strong> {{ local.acolhido.nome }}</p>
 					<p><strong>Contato do solicitante:</strong> {{ local.acolhido.contato }}</p>
 					<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
-					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Mudar status para disponível</a>
+					<a class="btn btn-success" href='../local/{{ local.id }}/aprovar'>Aprovar solicitação</a>
+					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar solicitação</a>
 				</div>
-				{% endif %}
 			</div>
 		{% endfor %}
 		</div>

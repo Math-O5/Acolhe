@@ -5,7 +5,8 @@ from .forms import UserForm, AcolhidoLoginForm, Local, Anfitriao
 # Create your views here.
 def home_acolhido(request):
 	local_disponivel = Local.objects.filter(status="DISPONIVEL")
-	local_solicitado = Local.objects.filter(acolhido=request.user.acolhido)
+	local_solicitado = Local.objects.filter(acolhido=request.user.acolhido, status="SOLICITADO")
+	local_aprovado = Local.objects.filter(acolhido=request.user.acolhido, status="OCUPADO")
 
 	if request.GET.get('search'):
 		search = request.GET.get('search')
@@ -14,6 +15,7 @@ def home_acolhido(request):
 	context = {
 		'local_disponivel': local_disponivel,
 		'local_solicitado': local_solicitado,
+		'local_aprovado': local_aprovado,
 	}
 
 	if request.user.is_authenticated and request.user.is_acolhido:

@@ -6,6 +6,33 @@
 		<p class="h4">Lorem ipsum dolor sit amet, quo te liber disputando, eam ex impetus inermis praesent, per an stet civibus. Viderer nominavi pericula no usu, esse natum et quo. Eum no vitae habemus voluptatibus, suas fierent ponderum at ius, dicam iuvaret quaerendum ea sed.</p>
 	</div>
 
+	{% if local_aprovado %}
+	<div>
+		<h1 class="mt-5">Locais aprovados</h1>
+		
+		<div class="card list-group drop">
+		{% for local in local_aprovado %}
+			<div class="card-body list-group-item">
+				<div class="card-title">
+					<p><strong>Nome do Anfitrião:</strong> {{ local.anfitriao.nome }}</p>
+					<p><strong>Contato do Anfitrião:</strong> {{ local.anfitriao.contato }}</p>
+				</div>
+				
+				<div class="card-body py-0">
+					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
+					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
+					<p><strong>Status (Apagar dps):</strong> {{ local.status }}</p>
+					<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Desistir do local</a>
+				</div>
+
+			</div>
+		{% endfor %}
+		</div>
+	</div>
+	{% endif %}
+
 	{% if local_solicitado %}
 	<div>
 		<h1 class="mt-5">Locais solicitados</h1>
@@ -23,6 +50,7 @@
 					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
 					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
+					<p><strong>Status (Apagar dps):</strong> {{ local.status }}</p>
 					<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Cancelar solicitação</a>
 				</div>
 
@@ -32,19 +60,18 @@
 	</div>
 	{% endif %}
 
-
 	<div class="mt-5">
 		<div class="row">
 			<h2 class="col-5">Locais disponívies</h2>
             <form method="get" class="col-7 row">
 				<input class="form-control col-8" placeholder="Digite a cidade que deseja" name="search">
-				<input type="submit" value="Pesquisar" class="btn btn-light col-4">
+				<input type="submit" value="Pesquisar" class="btn btn-info col-4">
 			</form>
 			
         </div>
 	
 		{% if not local_disponivel %}	
-			<h2>No momento não há lugares disponíveis</h2>
+			<p class="h5 alert alert-danger">No momento não há lugares disponíveis</p>
 		{% endif %}
 
 		<div class="card list-group">
@@ -56,7 +83,7 @@
 				<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
 				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
-				<a class="btn btn-primary" href='../local/{{ local.id }}/ocupado'>Solicitar local</a>
+				<a class="btn btn-primary" href='../local/{{ local.id }}/solicitar'>Solicitar local</a>
 				
 			</div>
 		{% endfor %}
