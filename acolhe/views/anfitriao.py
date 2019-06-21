@@ -25,7 +25,7 @@ def cadastrar_view(request):
     profile_form = AnfitriaoLoginForm(request.POST or None)
 
     if request.method == 'POST':
-        user_form = UserForm(request.POST, prefix='UF')
+        user_form = UserForm(request.POST, request.FILES, prefix='UF')
         profile_form = AnfitriaoLoginForm(request.POST, prefix='PF')
 		
         if user_form.is_valid() and profile_form.is_valid():
@@ -57,7 +57,7 @@ def cadastrar_local_view(request):
     local_form = LocalForm(request.POST or None)
 
     if request.method == 'POST':
-        local_form = LocalForm(request.POST)
+        local_form = LocalForm(request.POST, request.FILES)
 
         if local_form.is_valid():
             local = local_form.save(commit=False)

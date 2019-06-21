@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post">
+<link rel="stylesheet" href="{% static 'css/login.css' %}"/>
+<div style="background-color: rgba(253, 189, 51, 0.89); padding:20px" class="h-100">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-
-        <div class="row">
-            <div class="col-6">
-                {{ local_form.cidade|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ local_form.bairro|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {{ local_form.rua|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ local_form.numero|as_crispy_field }}
-            </div>
-        </div>
-		{{ local_form.descricao|as_crispy_field }}
-        <div class="row">
-            <div class="col-6">
+		<div class="card text-center bg-light mx-auto login" style="width:30rem;">
+			<div class="w-100"  style="margin-top:15px;">
+				{{ local_form.cidade|as_crispy_field }}
+			</div>
+			<div class="w-100" style="margin-top:15px;">
+				{{ local_form.bairro|as_crispy_field }}
+			</div>
+			<div class="w-100" style="margin-top:15px;">
+				{{ local_form.rua|as_crispy_field }}
+			</div>
+			<div class="w-100">
+				{{ local_form.numero|as_crispy_field }}
+			</div>
+			<div class="w-100">
+				{{ local_form.descricao|as_crispy_field }}
+			</div>
+			<div class="w-100">
 				{{ local_form.vagas|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ local_form.status|as_crispy_field }}
-            </div>
-        </div>
+			</div>
+			<div class="w-100">
+				{{ local_form.status|as_crispy_field }}
+			</div>
+			{{ local_form.foto|as_crispy_field }}
 
-        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
+			<button type="submit" class="btn btn-primary mt-4">Cadastrar local</button>
+		</div>
     </form>
+</div>
 {% endblock %}

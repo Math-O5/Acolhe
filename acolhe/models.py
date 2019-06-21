@@ -5,8 +5,9 @@ from django.dispatch import receiver
 from django.utils import timezone
 
 class User(AbstractUser):
-    is_anfitriao = models.BooleanField('anfitriao user', default=False)
-    is_acolhido = models.BooleanField('acolhido user', default=False)
+	is_anfitriao = models.BooleanField('anfitriao user', default=False)
+	is_acolhido = models.BooleanField('acolhido user', default=False)
+	foto = models.ImageField(upload_to="uploads/user/", default="defaultUser.png")
 
 class Acolhido(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='acolhido')
@@ -15,14 +16,12 @@ class Acolhido(models.Model):
     descricao = models.TextField()
     vagas = models.PositiveIntegerField(default=1)
     achou_moradia = models.BooleanField(default=False)
-	# fotinha
     # email
 
 class Anfitriao(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='anfitriao')
     nome = models.CharField(max_length=120)
     contato = models.CharField(max_length=11)
-    # fotinha
     # email
 
 class Local(models.Model):
@@ -37,7 +36,7 @@ class Local(models.Model):
 	status_list = [("OCUPADO", 'ocupado'), ("DISPONIVEL", 'disponível'), ("SOLICITADO", 'solicitado')]
 	status = models.CharField(max_length=20, choices=status_list, default="DISPONIVEL")
 	publicado_date = models.DateTimeField(blank=True, null=True)
-	# fotinha
+	foto = models.ImageField(upload_to="uploads/local/", default="defaultLugar.png")
 	# inicio_estadia
 	# termino_estadia
 	# tipo

@@ -4,7 +4,7 @@
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}"/>
 {% if not user.is_authenticated %}
-<div class="inicio pt-5">
+<div class="inicio pt-5 pb-5">
         <div class="col card-deck">
             <div class="row mx-auto">
                 <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
@@ -28,7 +28,7 @@
 </div>
 {% endif %}
 
-<div class="ultimos h-90">
+<div class="ultimos h-100" style="padding: 2rem 10%;">
     <h1>Ultimos locais </h1> 
     <div class="row mx-auto">
     
@@ -38,13 +38,12 @@
         <div class="card text-center bg-dark mx-auto" style="width: 20rem;">
             <h5 style="padding:17px;" class="card-title"><strong>{{ local.cidade }}</strong></h5>
                 <ul class="list-group list-group-flush">
-                    <p class="card-text text-left" style=" border: 1px solid rgb(165, 165, 165);"><p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p></p></p>
-                    <p class="text-left"> <p><strong>Bairro:</strong> {{ local.bairro }}</p></p>
-                    <p class="text-left"><p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p></p>
-                    <p class="text-left""><p><strong>Status:</strong> {{ local.status }}</p></p>
+					<img class="mx-3 mb-1" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+                    <p class="card-text text-left" emstyle=" border: 1px solid rgb(165, 165, 165);"><p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p></p></p>
+                    <p class="text-left"><p>{{ local.rua }}, {{ local.bairro}} - {{ local.numero }}</p></p>
                 </ul>
             <div class="card-footer">
-            <small style="color:white">Atualizados {{ local.publicado_date }} </small>
+            <small style="color:white">Adicionado há {{ timenow|timeuntil:local.publicado_date }} </small>
             </div>
         </div>
     </div>

@@ -3,9 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/login.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"/>
     <div style="background-color: rgba(253, 189, 51, 0.89); padding:20px" class="h-100">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
         
             {% csrf_token %}
         
@@ -23,6 +23,9 @@
                     <div class="col-12" style="margin-top:15px;">
                         {{ profile_form.contato|as_crispy_field }}
                     </div>
+					<div class="col-12 mx: auto" class="col-12" style="margin-top:15px;">
+						{{ user_form.foto|as_crispy_field }}
+                	</div>
                 </div>
                 <button type="submit" class="btn btn-info mt-4">Save changes</button>
             </div>

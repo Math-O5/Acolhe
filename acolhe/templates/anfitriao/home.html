@@ -1,26 +1,39 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
-    
+<div style="margin: 2rem 10%;">
+	<div class="media mt-5" >
+		<img class="mr-3 img-thumbnail" src="{{ request.user.foto.url }}" style="height: 200px; width: auto">
+		<div class="media-body">
+		    <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
+		</div>
+	</div>
+
+
 	<div class="mt-5">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_aprovado">Locais aprovados</a>
 
 		<div class="card list-group collapse" id="collapse_aprovado">
 		{% if local_aprovado %}
 		{% for local in local_aprovado %}
-			<div class="card-body list-group-item">
-				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
-				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-				<p><strong>Status:</strong> {{ local.status }}</p>
-				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+			<div class="media mb-4">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-1">
+					<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Status:</strong> {{ local.status }}</p>
+					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
-				<div class="card-body py-0">
-					<p><strong>Nome do ocupante:</strong> {{ local.acolhido.nome }}</p>
-					<p><strong>Contato do ocupante:</strong> {{ local.acolhido.contato }}</p>
-					<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
-					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar aprovação</a>
+					<div class="card-body py-0 media">
+						<img class="mr-3 rounded" src="{{ local.acolhido.user.foto.url }}" style="height: 200px; width: auto">
+						<div class="media-body">
+							<p><strong>Nome do ocupante:</strong> {{ local.acolhido.nome }}</p>
+							<p><strong>Contato do ocupante:</strong> {{ local.acolhido.contato }}</p>
+							<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
+							<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar aprovação</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		{% endfor %}
@@ -38,19 +51,25 @@
 		<div class="card list-group collapse" id="collapse_solicitado">
 		{% if local_solicitado %}
 		{% for local in local_solicitado %}
-			<div class="card-body list-group-item">
-				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
-				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-				<p><strong>Status:</strong> {{ local.status }}</p>
-				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+			<div class="media mb-4">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-1">
+					<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
+					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Status:</strong> {{ local.status }}</p>
+					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
-				<div class="card-body py-0">
-					<p><strong>Nome do solicitante:</strong> {{ local.acolhido.nome }}</p>
-					<p><strong>Contato do solicitante:</strong> {{ local.acolhido.contato }}</p>
-					<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
-					<a class="btn btn-success" href='../local/{{ local.id }}/aprovar'>Aprovar solicitação</a>
-					<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar solicitação</a>
+					<div class="card-body py-0 media">
+						<img class="mr-3 rounded" src="{{ local.acolhido.user.foto.url }}" style="height: 200px; width: auto">
+						<div class="media-body">
+							<p><strong>Nome do solicitante:</strong> {{ local.acolhido.nome }}</p>
+							<p><strong>Contato do solicitante:</strong> {{ local.acolhido.contato }}</p>
+							<p><strong>Descrição:</strong>{{ local.acolhido.descricao }}</p>
+							<a class="btn btn-success" href='../local/{{ local.id }}/aprovar'>Aprovar solicitação</a>
+							<a class="btn btn-danger" href='../local/{{ local.id }}/disponivel'>Cancelar solicitação</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		{% endfor %}
@@ -63,19 +82,22 @@
 	</div>
 
 	<div class="mt-5">
-		<h1>Locais disponívies</h1>
+		<h2>Locais disponívies</h2>
 
 		{% if not local_disponivel %}	
-			<h2>No momento não há lugares disponíveis cadastrados</h2>
+			<h4>No momento não há lugares disponíveis cadastrados</h4>
 		{% endif %}
 
 		<div class="card list-group">
 		{% for local in local_disponivel %}
-			<div class="card-body list-group-item">
-				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
-				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+			<div class="media my-1">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-3">
+					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
+					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+				</div>
 			</div>
 		{% endfor %}
 		</div>
@@ -86,6 +108,6 @@
 
 
 	<a href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-primary px-2 my-4" role="button">Cadastrar um novo <strong>local</strong></a>
-
+</div>
 {% endblock %}
 

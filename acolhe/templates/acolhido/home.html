@@ -1,9 +1,13 @@
 {% extends 'base.html' %}
 {% block content %}
+<div style="margin: 2rem 10%;">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<div >
-		<h1 class="display-4">Olá, {{ request.user }}</h1>
-		<p class="h4">Lorem ipsum dolor sit amet, quo te liber disputando, eam ex impetus inermis praesent, per an stet civibus. Viderer nominavi pericula no usu, esse natum et quo. Eum no vitae habemus voluptatibus, suas fierent ponderum at ius, dicam iuvaret quaerendum ea sed.</p>
+	<div class="media mt-5" >
+		<img class="mr-3 img-thumbnail" src="{{ request.user.foto.url }}" style="height: 200px; width: auto">
+		<div class="media-body">
+			<h1 class="display-4">Olá, {{ request.user.acolhido.nome }}</h1>
+			<p class="h4">{{ request.user.acolhido.descricao }}</p>
+		</div>
 	</div>
 
 	<div class="mt-5">
@@ -12,20 +16,22 @@
 		<div class="card list-group collapse" id="collapse_aprovado">
 		{% if local_aprovado %}
 		{% for local in local_aprovado %}
-			<div class="card-body list-group-item">
-				<div class="card-title">
-					<p><strong>Nome do Anfitrião:</strong> {{ local.anfitriao.nome }}</p>
-					<p><strong>Contato do Anfitrião:</strong> {{ local.anfitriao.contato }}</p>
+			<div class="media mb-4">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-1">
+					<div class="card-title">
+						<p><strong>Nome do Anfitrião:</strong> {{ local.anfitriao.nome }}</p>
+						<p><strong>Contato do Anfitrião:</strong> {{ local.anfitriao.contato }}</p>
+					</div>
+					
+					<div class="card-body py-0">
+						<p><strong>Cidade:</strong> {{ local.cidade }}</p>
+						<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+						<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+						<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
+						<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Desistir do local</a>
+					</div>
 				</div>
-				
-				<div class="card-body py-0">
-					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
-					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
-					<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Desistir do local</a>
-				</div>
-
 			</div>
 		{% endfor %}
 		{% endif %}
@@ -41,20 +47,22 @@
 		<div class="card list-group drop collapse" id="collapse_solicitado">
 		{% if local_solicitado %}
 		{% for local in local_solicitado %}
-			<div class="card-body list-group-item">
-				<div class="card-title">
-					<p><strong>Nome do Anfitrião:</strong> {{ local.anfitriao.nome }}</p>
-					<p><strong>Contato do Anfitrião:</strong> {{ local.anfitriao.contato }}</p>
+			<div class="media mb-4">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-1">
+					<div class="card-title">
+						<p><strong>Nome do Anfitrião:</strong> {{ local.anfitriao.nome }}</p>
+						<p><strong>Contato do Anfitrião:</strong> {{ local.anfitriao.contato }}</p>
+					</div>
+					
+					<div class="card-body py-0">
+						<p><strong>Cidade:</strong> {{ local.cidade }}</p>
+						<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+						<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+						<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
+						<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Cancelar solicitação</a>
+					</div>
 				</div>
-				
-				<div class="card-body py-0">
-					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
-					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
-					<a class="btn btn-danger" href='../local/{{ local.id }}/cancelar'>Cancelar solicitação</a>
-				</div>
-
 			</div>
 		{% endfor %}
 		{% endif %}
@@ -80,19 +88,20 @@
 
 		<div class="card list-group">
 		{% for local in local_disponivel %}
-			<div class="card-body list-group-item">
-				<p class="card-title"><strong>Cidade:</strong> {{ local.cidade }}</p>
-				<p><strong>Bairro:</strong> {{ local.bairro }}</p>
-				<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
-				<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
-				<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
+			<div class="media mb-4">
+				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
+				<div class="media-body mt-1">
+					<p><strong>Cidade:</strong> {{ local.cidade }}</p>
+					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
+					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
+					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
+					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
-				<a class="btn btn-primary" href='../local/{{ local.id }}/solicitar'>Solicitar local</a>
-				
+					<a class="btn btn-primary" href='../local/{{ local.id }}/solicitar'>Solicitar local</a>
+				</div>
 			</div>
 		{% endfor %}
 		</div>
-
 	</div>
-
+</div>
 {% endblock %}

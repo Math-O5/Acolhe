@@ -3,9 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <link rel="stylesheet" href="{% static 'css/login.css'%}"/>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}"/>
     <div style="background-color: rgba(253, 189, 51, 0.89); padding:20px;" class="h-100">
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
 
             <div class="card text-center bg-light mx-auto login">
@@ -14,8 +14,8 @@
                     <strong>
                         {{ user_form.username|as_crispy_field }}
                     </strong>
-                        
                 </div>
+               
                 <div class="col-12" class="col-12" style="margin-top:15px;">
                     <strong>
                         {{ user_form.password|as_crispy_field }}
@@ -41,9 +41,14 @@
                         {{ profile_form.vagas|as_crispy_field }}
                     </strong>
                 </div>
+				<div class="col-12" class="col-12" style="margin-top:15px;">
+                    <strong>
+						{{ user_form.foto|as_crispy_field }}
+                    </strong>
+                </div>
 
             </div>
-            <button type="submit" class="btn btn-info mt-4">Save changes</button>
+            <button type="submit" class="btn btn-info mt-4">Cadastrar</button>
           
         
 

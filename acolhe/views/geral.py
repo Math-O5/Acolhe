@@ -9,9 +9,11 @@ class cadastrarView(TemplateView):
 
 def home_view(request):
 	local_disponivel = Local.objects.order_by('-publicado_date').filter(status="DISPONIVEL")[:3]
+	timenow = timezone.now()
 
 	context = {
 		'local_disponivel': local_disponivel,
+		'timenow': timenow,
 	}
 	return render(request, 'home.html', context)
 

@@ -6,7 +6,7 @@ class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     class Meta:
         model = User
-        fields = ('username',)
+        fields = ('username', 'foto')
 
 class AcolhidoLoginForm(forms.ModelForm):
     class Meta:
@@ -21,4 +21,4 @@ class AnfitriaoLoginForm(forms.ModelForm):
 class LocalForm(forms.ModelForm):
 	class Meta:
 		model = Local
-		fields = ('cidade', 'bairro', 'rua', 'numero', 'vagas', 'descricao', 'status')
+		fields = ('cidade', 'bairro', 'rua', 'numero', 'vagas', 'descricao', 'status', 'foto')
