@@ -2,12 +2,18 @@ from django.shortcuts import redirect, render
 from django.views.generic import TemplateView
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, logout, authenticate
-
+from ..models import Local
+from django.utils import timezone
 class cadastrarView(TemplateView):
    template_name = 'registrar/signup.html'
 
 def home_view(request):
-	return render(request, 'home.html')
+	local_disponivel = Local.objects.filter(status="DISPONIVEL")[:6] 
+
+	context = {
+		'local_disponivel': local_disponivel,
+	}
+	return render(request, 'home.html', context)
 
 def login_view(request):
 	if request.method == 'POST':

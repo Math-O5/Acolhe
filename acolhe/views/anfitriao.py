@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import UserForm, AnfitriaoLoginForm, LocalForm
 from ..models import Local, Anfitriao, User
+from django.utils import timezone
 
 # Create your views here.
 def home_anfitriao(request):    
@@ -53,23 +54,23 @@ def cadastrar_view(request):
     return render(request, 'anfitriao_form.html', context)
 
 def cadastrar_local_view(request):
-	local_form = LocalForm(request.POST or None)
+    local_form = LocalForm(request.POST or None)
 
-	if request.method == 'POST':
-		local_form = LocalForm(request.POST)
+    if request.method == 'POST':
+        local_form = LocalForm(request.POST)
 
-		if local_form.is_valid():
-			local = local_form.save(commit=False)
-			local.anfitriao = request.user.anfitriao
-			local.save()
+        if local_form.is_valid():
+            local = local_form.save(commit=False)
+            local.anfitriao = request.user.anfitriao
+            local.publicado_date = timezone.now()
+            local.save()
+        return redirect('anfitriao:home_anfitriao')
+    else:
+        local_form = LocalForm(None)
 
-			return redirect('anfitriao:home_anfitriao')
-	else:
-		local_form = LocalForm(None)
+        context = {
+        'local_form': local_form,
+        }
 
-	context = {
-		'local_form': local_form,
-	}
-
-	return render(request, 'local_form.html', context)
+        return render(request, 'local_form.html', context)
 
