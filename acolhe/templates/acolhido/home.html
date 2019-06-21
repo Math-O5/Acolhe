@@ -1,16 +1,19 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block content %}
-<div style="margin: 2rem 10%;">
-	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-	<div class="media mt-5" >
+
+<link rel="stylesheet" href="{% static 'css/home.css'%}"/>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+
+	<div class="media pt-5 ultimos" style="padding: 2rem 10%;">
 		<img class="mr-3 img-thumbnail" src="{{ request.user.foto.url }}" style="height: 200px; width: auto">
 		<div class="media-body">
 			<h1 class="display-4">Olá, {{ request.user.acolhido.nome }}</h1>
-			<p class="h4">{{ request.user.acolhido.descricao }}</p>
+			<p class="h4" style="color: white">{{ request.user.acolhido.descricao }}</p>
 		</div>
 	</div>
 
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10%;">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_aprovado">Locais aprovados</a>
 		
 		<div class="card list-group collapse" id="collapse_aprovado">
@@ -41,7 +44,7 @@
 		</div>
 	</div>
 
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10%;">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_solicitado">Locais solicitados</a>
 		
 		<div class="card list-group drop collapse" id="collapse_solicitado">
@@ -72,7 +75,7 @@
 		</div>
 	</div>
 
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10% 3rem 10%;">
 		<div class="row">
 			<h2 class="col-5">Locais disponívies</h2>
             <form method="get" class="col-7 row">
