@@ -10,8 +10,9 @@ urlpatterns = [
    ], 'acolhe'), namespace='acolhido')
    ),
 
-   path('local/<int:id>/ocupado', local.ocupado_view, name='local_ocupado'),
+   path('local/<int:id>/solicitar', local.solicitar_view, name='local_solicitar'),
    path('local/<int:id>/cancelar', local.cancelar_view, name='local_cancelar'),
+   path('local/<int:id>/aprovar', local.aprovar_view, name='local_disponivel'),
    path('local/<int:id>/disponivel', local.disponivel_view, name='local_disponivel'),
 
    path('anfitriao/', include(([
@@ -20,7 +21,7 @@ urlpatterns = [
       path('local', anfitriao.cadastrar_local_view, name='cadastrar_local'),
    ], 'acolhe'),namespace='anfitriao')
    ),
-   
+
    path('login/', geral.login_view, name='login'),
    path('logout/', geral.logout_view, name='logout'),
 ]

@@ -6,11 +6,13 @@ from ..models import Local, Anfitriao, User
 # Create your views here.
 def home_anfitriao(request):    
 	local_disponivel = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="DISPONIVEL")
-	local_ocupado = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="OCUPADO")
+	local_solicitado = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="SOLICITADO")
+	local_aprovado = Local.objects.filter(anfitriao__nome=request.user.anfitriao.nome, status="OCUPADO")
 
 	context = {
 		'local_disponivel': local_disponivel,
-		'local_ocupado': local_ocupado,
+		'local_solicitado': local_solicitado,
+		'local_aprovado': local_aprovado,
 	}
 
 	if request.user.is_authenticated and request.user.is_anfitriao:

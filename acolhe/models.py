@@ -33,7 +33,7 @@ class Local(models.Model):
 	numero = models.PositiveIntegerField()
 	vagas = models.PositiveIntegerField(default=1)
 	descricao = models.TextField()
-	status_list = [("OCUPADO", 'ocupado'), ("DISPONIVEL", 'disponível')]
+	status_list = [("OCUPADO", 'ocupado'), ("DISPONIVEL", 'disponível'), ("SOLICITADO", 'solicitado')]
 	status = models.CharField(max_length=20, choices=status_list, default="DISPONIVEL")
 	# fotinha
 	# inicio_estadia
