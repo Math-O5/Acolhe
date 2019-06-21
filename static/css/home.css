@@ -15,7 +15,7 @@ html, body {
     }
   }
 
-.card {
+#card {
     display: inline-block;
 }
 

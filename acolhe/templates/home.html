@@ -2,12 +2,12 @@
 {% load static %}
 
 {% block content %}
-<link rel="stylesheet" href="{% static 'css/login.css'%}"/>
+<link rel="stylesheet" href="{% static 'css/home.css'%}"/>
 {% if not user.is_authenticated %}
 <div class="inicio pt-5 pb-5">
         <div class="col card-deck">
             <div class="row mx-auto">
-                <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
+                <div class="card text-center bg-warning mx-auto" style="width: 20rem;" id="card">
                     <img class="card-img-top" src="{% static 'img/acolhido.png' %}" alt="Imagem de capa do card"  width="400" height="200">
                     <div class="card-body">
                         <h5 class="card-title">Seja um acolhido</h5>
@@ -15,7 +15,7 @@
                         <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark btn-block" role="button">Receber ajuda</a>
                     </div>
                 </div>
-                <div class="card text-center bg-warning mx-auto" style="width: 20rem;">
+                <div class="card text-center bg-warning mx-auto" style="width: 20rem;" id="card">
                     <img class="card-img-top" src="{% static 'img/anfitriao.jpg' %}" alt="Imagem de capa do card"  width="400" height="200">
                     <div class="card-body">
                         <h5 class="card-title">Seja um anfitrião</h5>

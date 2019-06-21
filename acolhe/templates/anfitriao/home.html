@@ -2,25 +2,16 @@
 {% load static %}
 
 {% block content %}
-<<<<<<< HEAD
-<div style="margin: 2rem 10%;">
-	<div class="media mt-5" >
+<link rel="stylesheet" href="{% static 'css/home.css'%}"/>
+	<div class="media ultimos" style="padding: 2rem 10%;">
 		<img class="mr-3 img-thumbnail" src="{{ request.user.foto.url }}" style="height: 200px; width: auto">
 		<div class="media-body">
 		    <h1 class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
+			<a href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-info px-2 my-4" role="button" style="margin-left:20px;">Adicionar um novo <strong>local</strong></a>
 		</div>
 	</div>
 
-
-=======
-	<link rel="stylesheet" href="{% static 'css/home.css'%}"/>
-	<div class="ultimos">
-		<h1 style="display: inline-flex; margin-left:0;" class="display-4">Olá, {{ request.user.anfitriao.nome }}</h1>
-		<a  style=" margin-top:0;" href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-info px-2 my-4" role="button" style="margin-left:20px;"> novo <strong>local</strong></a>
-	</div>
-	
->>>>>>> d7d476916d183c2b2b98ab4a16f1256e12b7a0c6
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10%;">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_aprovado">Locais aprovados</a>
 
 		<div class="card list-group collapse" id="collapse_aprovado">
@@ -55,7 +46,7 @@
 
 	</div>
 
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10%;">
 		<a role="button" class="h2 dropdown-toggle" data-toggle="collapse" data-target="#collapse_solicitado">Locais solicitados</a>
 
 		<div class="card list-group collapse" id="collapse_solicitado">
@@ -91,13 +82,14 @@
 
 	</div>
 
-	<div class="mt-5">
+	<div class="mt-5" style="padding: 0rem 10% 3rem 10%;">
 		<h2>Locais disponívies</h2>
 
 		{% if not local_disponivel %}	
 			<h4>No momento não há lugares disponíveis cadastrados</h4>
 		{% endif %}
 
+		<div class="card">
 		{% for local in local_disponivel %}
 			<div class="media my-1">
 				<img class="mr-3" src="{{ local.foto.url }}" style="height: 200px; width: auto">
@@ -110,19 +102,9 @@
 					<a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove">Remover</span></a>
 				</div>
 			</div>
-			</div>
 			{% endfor %}
-
-
-
+		</div>
 	</div>
 
-
-<<<<<<< HEAD
-	<a href="{% url 'anfitriao:cadastrar_local' %}" class="btn btn-primary px-2 my-4" role="button">Cadastrar um novo <strong>local</strong></a>
-</div>
-=======
-
->>>>>>> d7d476916d183c2b2b98ab4a16f1256e12b7a0c6
 {% endblock %}
 
