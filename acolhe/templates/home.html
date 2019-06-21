@@ -27,43 +27,35 @@
         </div>
 </div>
 {% endif %}
-<div style="margin-top:20px"><h1>Ultimos locais</h1></div>
 
-<div class="row mx-auto">
-	
-        {% for local in local_disponivel %}
-		<div class="col-2">
-            <div class="card-body">
-                <h5 class="card-title"><strong>{{ local.cidade }}</strong></h5>
-                <p class="card-text"><p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p></p>
+<div class="ultimos">
+    <h1>Ultimos locais </h1> 
+    <div class="row mx-auto">
+    
+    {% for local in local_disponivel %}
 
-                <div class="card">
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item"> <p><strong>Bairro:</strong> {{ local.bairro }}</p></li>
-                        <li class="list-group-item"><p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p></li>
-                        <li class="list-group-item"></li><p><strong>Status:</strong> {{ local.status }}</p></li>
-                    </ul>
-                </div>
-            </div>
+    <div class="col-4" style="color:white;">
+        <div class="card text-center bg-dark mx-auto" style="width: 20rem;">
+            <h5 style="padding:17px;" class="card-title"><strong>{{ local.cidade }}</strong></h5>
+                <ul class="list-group list-group-flush">
+                    <p class="card-text text-left" style=" border: 1px solid rgb(165, 165, 165);"><p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p></p></p>
+                    <p class="text-left"> <p><strong>Bairro:</strong> {{ local.bairro }}</p></p>
+                    <p class="text-left"><p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p></p>
+                    <p class="text-left""><p><strong>Status:</strong> {{ local.status }}</p></p>
+                </ul>
             <div class="card-footer">
-                <small style="color:black">Atualizados {{ local.publicado_date }} </small>
+            <small style="color:white">Atualizados {{ local.publicado_date }} </small>
             </div>
-		</div>
-        {% endfor %}
-		
-        {% if not local_disponivel %}
-            <p class="h5 alert-danger">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém em 
-                <a href="{% url 'anfitriao:cadastrar_anfitriao' %}"></a>
-            </p>
-        {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+      
+            {% if not local_disponivel %}
+                <p class="h5 alert-danger">Não há lugares disponíveis. Aguarde por publicações ou ajude alguém em 
+                    <a href="{% url 'anfitriao:cadastrar_anfitriao' %}"></a>
+                </p>
+            {% endif %}
+    </div>
 </div>
 
-<small class="text-muted"><p>Encontre um lugar para se instalar</p></small>
-<p class="lead">
-    Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus.
-</p>
-
-<blockquote class="blockquote">
-    <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-</blockquote>
 {% endblock %}
