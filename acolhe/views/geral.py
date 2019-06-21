@@ -8,7 +8,7 @@ class cadastrarView(TemplateView):
    template_name = 'registrar/signup.html'
 
 def home_view(request):
-	local_disponivel = Local.objects.filter(status="DISPONIVEL")[:6] 
+	local_disponivel = Local.objects.filter(status="DISPONIVEL")[:3]
 
 	context = {
 		'local_disponivel': local_disponivel,

@@ -3,29 +3,32 @@
 {% load crispy_forms_tags %}
 
 {% block content %}
-    <form method="post">
-        {% csrf_token %}
-
-        <div class="row">
-            <div class="col-6">
-                {{ user_form.username|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ user_form.password|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-6">
-                {{ profile_form.nome|as_crispy_field }}
-            </div>
-            <div class="col-6">
-                {{ profile_form.contato|as_crispy_field }}
-            </div>
-        </div>
-
-        {% comment %} {{ user_form.as_p }}
-        {{ profile_form.as_p }} {% endcomment %}
+    <div style="background-color: rgba(253, 189, 51, 0.89);padding:20px">
+        <form method="post">
         
-        <button type="submit" class="btn btn-primary mt-4">Save changes</button>
-    </form>
+            {% csrf_token %}
+        
+            <div class="card text-center bg-light mx-auto" style="width: 20rem;">
+                <div class="row" >
+                    <div class="col-12">
+                        {{ user_form.username|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ user_form.password|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ profile_form.nome|as_crispy_field }}
+                    </div>
+                    <div class="col-12">
+                        {{ profile_form.contato|as_crispy_field }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Save changes</button>
+            </div>
+        
+            {% comment %} {{ user_form.as_p }}
+            {{ profile_form.as_p }} {% endcomment %}
+            
+        </form>
+    </div>
 {% endblock %}
