@@ -13,14 +13,14 @@
  </ul>
  
  - Funcionalidades
-  -- Anfitrião
-    - Postar, Editar, Ver, Excluir locais
-    - Aprovar solicitação de um usuario que queira alojamento no local.
-    - upload de fotos
-    - comentário
-  -- Acolhido
-    - Ver postagem dos locais
-    - Solicitar local
+    - Anfitrião
+    <li> Postar, Editar, Ver, Excluir locais </li>
+    <li> Aprovar solicitação de um usuario que queira alojamento no local </li>
+    <li> upload de fotos </li>
+    <li> comentário </li>
+    - Acolhido
+    <li> Ver postagem dos locais </li>
+    <li> Solicitar local </li>
    
 -Execução
 
