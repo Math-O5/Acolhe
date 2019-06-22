@@ -11,7 +11,7 @@ Para iniciar o servidor e ver a aplicação em execução, acesse a página do p
 
 Comando 1: Ligar o servidor no endereço: http://192.168.0.1:8000
 
-''' ~/poo-acolhe$ python manage.py runserver '''
+--- ~/poo-acolhe$ python manage.py runserver ---
 
 Para criar um super usuário, e ser o administrador do sistema, exclua o arquivo em poo-acolhe/db.sqlite3,  digite:
 
