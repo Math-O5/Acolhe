@@ -15,15 +15,19 @@
  <ul>Funcionalidades 
     <ul>
     Anfitrião
-      <li> Postar, Editar, Ver, Excluir locais </li>
-      <li> Aprovar solicitação de um usuario que queira alojamento no local </li>
-      <li> upload de fotos </li>
-      <li> comentário </li>
+      <ul>
+        <li> Postar, Editar, Ver, Excluir locais </li>
+        <li> Aprovar solicitação de um usuario que queira alojamento no local </li>
+        <li> upload de fotos </li>
+        <li> comentário </li>
+      </ul>
     </ul>
     <ul>
     Acolhido
-      <li> Ver postagem dos locais </li>
-      <li> Solicitar local </li>
+      <ul>
+        <li> Ver postagem dos locais </li>
+        <li> Solicitar local </li>
+      </ul>
     </ul>
   </ul>
 -Execução
