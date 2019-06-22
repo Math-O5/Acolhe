@@ -1,10 +1,15 @@
-# poo-acolhe
+<h1>poo-acolhe</h1>
 Orientação a Objetos com Python (Projeto Acolhe)
 
 - Descrição
   Essa plataforma é um lugar onde você pode ajudar pessoas que ficaram desabrigadas por algum motivo, ou se você precisa de
-  abrigo por algum motivo, pode procurar essas pessoas/instituições que se disporam a ajudar.
+  abrigo por algum motivo, tal como estar localizado em zona de risco, pode procurar essas pessoas/instituições que se disporam a ajudar.
   
+ <h2>Dependencias</h2>
+ - python >3
+ - django >2.1
+ - crispy_forms
+ 
 -Execução
 
 Para iniciar o servidor e ver a aplicação em execução, acesse a página do projeto via terminal e digite:
