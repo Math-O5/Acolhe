@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import login, authenticate
-from .forms import UserForm, AnfitriaoLoginForm, LocalForm
+from .forms import UserForm, AnfitriaoLoginForm, LocalForm, CommentForm
 from ..models import Local, Anfitriao, User
 from django.utils import timezone
 
@@ -102,3 +102,19 @@ def anfitriao_detalhes_view(request, id):
     local = get_object_or_404(Local, id=id)
 
     return render(request, 'anfitriao/local_detalhes.html', {'local': local})
+def add_comment_to_local_anfitriao(request, pk):
+    local = get_object_or_404(Local, pk=pk)
+    user = local.anfitriao
+
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.local = local
+            # preencher author automaticamente TODO
+            #comment.author = user.anfitriao.nome
+            comment.save()
+            return redirect('anfitriao:home_anfitriao')
+
+    form = CommentForm()
+    return render(request, 'anfitriao/add_comment_to_local.html', {'form': form})

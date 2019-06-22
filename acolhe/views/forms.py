@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from ..models import Acolhido, User, Anfitriao, Local
+from ..models import Acolhido, User, Anfitriao, Local, Comment
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -22,3 +22,8 @@ class LocalForm(forms.ModelForm):
 	class Meta:
 		model = Local
 		fields = ('cidade', 'bairro', 'rua', 'numero', 'vagas', 'descricao', 'status', 'foto')
+
+class CommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ('author', 'text',)

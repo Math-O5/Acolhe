@@ -4,7 +4,7 @@
 {% block content %}
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+<link rel="stylesheet" href="{% static 'css/home.css' %}"
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
 
@@ -22,6 +22,18 @@
                 {{ local.publicado_date }}
             </div>
             <a class="btn btn-success" href="{% url 'home' %}"><span class=" glyphicon glyphicon-ok "></span></a>
+            <a class="btn btn-info" href="{% url 'add_comment_to_local' pk=local.pk %}"><span class="glyphicon glyphicon-comment"></span></a>
         </div>
+</div>
+<hr>
+{% for comment in local.comments.all %}
+    <div class="comment">
+        <div class="date">{{ comment.created_date }}</div>
+        <strong>{{ comment.author }}</strong>
+        <p>{{ comment.text|linebreaks }}</p>
     </div>
+{% empty %}
+    <p>No comments here yet :(</p>
+{% endfor %}
+
 {% endblock %}

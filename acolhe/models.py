@@ -43,6 +43,20 @@ class Local(models.Model):
 	def __str__(self):
 		return self.cidade
 
+class Comment(models.Model):
+    local = models.ForeignKey('acolhe.Local', on_delete=models.CASCADE, related_name='comments')
+    author = models.CharField(max_length=200)
+    text = models.TextField()
+    created_date = models.DateTimeField(default=timezone.now)
+    approved_comment = models.BooleanField(default=False)
+
+    def approve(self):
+        self.approved_comment = True
+        self.save()
+
+    def __str__(self):
+        return self.text
+	
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
 	print('****', created)

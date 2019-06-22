@@ -15,6 +15,7 @@ urlpatterns = [
    path('local/<int:id>/aprovar', local.aprovar_view, name='local_disponivel'),
    path('local/<int:id>/disponivel', local.disponivel_view, name='local_disponivel'),
    path('local/<int:id>/detalhes', local.detalhes_view, name='detalhes_view'),
+   path('local/<int:pk>/comment/', local.add_comment_to_local, name='add_comment_to_local'),
 
    path('anfitriao/', include(([
       path('', anfitriao.home_anfitriao, name = 'home_anfitriao'),
@@ -23,6 +24,7 @@ urlpatterns = [
       path('local/<pk>/remover', anfitriao.remover_view, name='remover_view'),
       path('local/<pk>/editar/',anfitriao.editar_view, name='editar_view'),
       path('local/<int:id>/detalhes', anfitriao.anfitriao_detalhes_view, name='anfitriao_detalhes_view'),
+      path('local/<int:pk>/comment/', anfitriao.add_comment_to_local_anfitriao, name='add_comment_to_local_anfitriao'),
    ], 'acolhe'),namespace='anfitriao')
    ),
 

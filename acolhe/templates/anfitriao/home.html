@@ -100,6 +100,7 @@
 					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 					<a class="btn btn-info" href="{% url 'anfitriao:anfitriao_detalhes_view' id=local.id %}"><span class=" glyphicon glyphicon-pencil">Detalhes</span></a>
 					<a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove">Remover</span></a>
+					<a class="btn btn-light" href="{% url 'anfitriao:add_comment_to_local_anfitriao' pk=local.pk %}"><span>Comments: {{ local.comments.count }}</span></a>
 				</div>
 			</div>
 			{% endfor %}

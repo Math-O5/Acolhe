@@ -24,6 +24,17 @@
             <a class="btn btn-success" href="{% url 'anfitriao:home_anfitriao' %}"><span class=" glyphicon glyphicon-ok "></span></a>
             <a class="btn btn-info" href="{% url 'anfitriao:editar_view' pk=local.pk %}"><span class=" glyphicon glyphicon-pencil"></span></a>
             <a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            <a class="btn btn-info" href="{% url 'anfitriao:add_comment_to_local_anfitriao' pk=local.pk %}"><span class="glyphicon glyphicon-comment"></span></a>
         </div>
-    </div>
+</div>
+<hr>
+{% for comment in local.comments.all %}
+<div class="comment">
+    <div class="date">{{ comment.created_date }}</div>
+    <strong>{{ comment.author }}</strong>
+    <p>{{ comment.text|linebreaks }}</p>
+</div>
+{% empty %}
+<p>No comments here yet :(</p>
+{% endfor %}
 {% endblock %}
