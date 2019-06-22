@@ -6,9 +6,10 @@
   
  <h2>Dependencias</h2>
  <ul>
-  <li> python >3</li>
-  <li> django >2.1 >3</li>
-  <li> crispy_forms >3</li>
+  <li> python > 3</li>
+  <li> django > 2.1</li>
+  <li> crispy_forms > 3</li>
+  <li> sqlLite3 </li>
  </ul>
  
 -Execução
