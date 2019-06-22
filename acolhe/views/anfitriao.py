@@ -79,7 +79,26 @@ def remover_view(request, pk):
     local.delete()
     return redirect('anfitriao:home_anfitriao')
 
-def detalhes_view(request, pk):
-    local = get_object_or_404(Local, pk=pk)
-    local.delete()
-    
+# pk eh o mesmo que id
+# Primeiro requira o id
+# Depois edite ele.
+def editar_view(request, pk):
+     local = get_object_or_404(Local, pk=pk)
+
+     if request.method == "POST":
+        local_form =  LocalForm(request.POST, instance=local)
+        if local_form.is_valid():
+            local = local_form.save(commit=False)
+            local.anfitriao = request.user.anfitriao
+            local.publicado_date = timezone.now()
+            local.save()
+        return redirect('anfitriao:anfitriao_detalhes_view', pk)
+ 
+     else:
+        local_form =  LocalForm(request.POST, instance=local)
+     return render(request, 'anfitriao/local_editar.html', {'local_form': local_form})
+
+def anfitriao_detalhes_view(request, id):
+    local = get_object_or_404(Local, id=id)
+
+    return render(request, 'anfitriao/local_detalhes.html', {'local': local})

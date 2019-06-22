@@ -100,6 +100,7 @@
 					<p><strong>Quantidade de vagas:</strong> {{ local.vagas }}</p>
 					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
 
+					<a class="btn btn-info" href="{% url 'detalhes_view' id=local.id %}"><span class=" glyphicon glyphicon-pencil">Detalhes</span></a>
 					<a class="btn btn-primary" href='../local/{{ local.id }}/solicitar'>Solicitar local</a>
 				</div>
 			</div>

@@ -13,11 +13,11 @@
         <div class="d-flex form-inline">
             <p class="mr-auto p-2">Logado como 
 				<strong>
-					{% if user.is_acolhido %}
-						<a class="no-style"  href="{% url 'acolhido:home_acolhido' %}">{{ user.username }}</a>
+                    {% if user.is_acolhido %}
+						<a class="no-style"  href="{% url 'acolhido:home_acolhido' %}"><span class="glyphicon glyphicon-user">{{ user.username }}</span></a>
 					{% endif %}
 					{% if user.is_anfitriao %}
-						<a href="{% url 'anfitriao:home_anfitriao' %}">{{ user.username }}</a>
+						<a href="{% url 'anfitriao:home_anfitriao' %}"><span class="glyphicon glyphicon-user">{{ user.username }}</span></a>
 					{% endif %}
 				</strong>
 			</p>
@@ -28,7 +28,7 @@
         </div>
     {% else %}
         <div class="d-flex form-inline">
-        <a href="{% url 'login' %}" class="btn btn-light mr-auto px-4 " role="button">Fazer login</a>
+        <a style="color:black;" href="{% url 'login' %}" class="btn btn-light mr-auto px-4 " role="button">Fazer login</a>
         <a href="{% url 'acolhido:cadastrar_acolhido' %}" class="btn btn-dark mx-2" role="button">Receber ajuda</a>
         <a href="{% url 'anfitriao:cadastrar_anfitriao' %}" class="btn btn-dark mx-2" role="button">Ofereça ajuda</a>
         </div>

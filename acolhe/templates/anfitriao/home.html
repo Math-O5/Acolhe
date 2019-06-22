@@ -98,7 +98,7 @@
 					<p><strong>Bairro:</strong> {{ local.bairro }}</p>
 					<p><strong>Enrereço:</strong> {{ local.rua }} - {{ local.numero }}</p>
 					<p><strong>Descrição:</strong> {{ local.descricao|truncatechars:100 }}</p>
-					<a class="btn btn-info" href="{% url 'detalhes_view' id=local.id %}"><span class=" glyphicon glyphicon-pencil">Detalhes</span></a>
+					<a class="btn btn-info" href="{% url 'anfitriao:anfitriao_detalhes_view' id=local.id %}"><span class=" glyphicon glyphicon-pencil">Detalhes</span></a>
 					<a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove">Remover</span></a>
 				</div>
 			</div>

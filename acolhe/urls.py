@@ -21,6 +21,8 @@ urlpatterns = [
       path('cadastrar', anfitriao.cadastrar_view, name='cadastrar_anfitriao'),
       path('local', anfitriao.cadastrar_local_view, name='cadastrar_local'),
       path('local/<pk>/remover', anfitriao.remover_view, name='remover_view'),
+      path('local/<pk>/editar/',anfitriao.editar_view, name='editar_view'),
+      path('local/<int:id>/detalhes', anfitriao.anfitriao_detalhes_view, name='anfitriao_detalhes_view'),
    ], 'acolhe'),namespace='anfitriao')
    ),
 

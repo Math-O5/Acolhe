@@ -30,4 +30,5 @@ def cancelar_view(request, id):
 
 def detalhes_view(request, id):
     local = get_object_or_404(Local, id=id)
+	
     return render(request, 'local_detalhe.html', {'local': local})

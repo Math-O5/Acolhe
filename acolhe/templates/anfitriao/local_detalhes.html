@@ -21,7 +21,9 @@
             <div class="date">
                 {{ local.publicado_date }}
             </div>
-            <a class="btn btn-success" href="{% url 'home' %}"><span class=" glyphicon glyphicon-ok "></span></a>
+            <a class="btn btn-success" href="{% url 'anfitriao:home_anfitriao' %}"><span class=" glyphicon glyphicon-ok "></span></a>
+            <a class="btn btn-info" href="{% url 'anfitriao:editar_view' pk=local.pk %}"><span class=" glyphicon glyphicon-pencil"></span></a>
+            <a class="btn btn-danger" href="{% url 'anfitriao:remover_view' pk=local.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
         </div>
     </div>
 {% endblock %}
