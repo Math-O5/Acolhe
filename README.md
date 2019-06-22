@@ -12,16 +12,20 @@
   <li> sqlLite3 </li>
  </ul>
  
- - Funcionalidades
-    - Anfitrião
-    <li> Postar, Editar, Ver, Excluir locais </li>
-    <li> Aprovar solicitação de um usuario que queira alojamento no local </li>
-    <li> upload de fotos </li>
-    <li> comentário </li>
-    - Acolhido
-    <li> Ver postagem dos locais </li>
-    <li> Solicitar local </li>
-   
+ <ul>Funcionalidades 
+    <ul>
+    Anfitrião
+      <li> Postar, Editar, Ver, Excluir locais </li>
+      <li> Aprovar solicitação de um usuario que queira alojamento no local </li>
+      <li> upload de fotos </li>
+      <li> comentário </li>
+    </ul>
+    <ul>
+    Acolhido
+      <li> Ver postagem dos locais </li>
+      <li> Solicitar local </li>
+    </ul>
+  </ul>
 -Execução
 
 Para iniciar o servidor e ver a aplicação em execução, acesse a página do projeto via terminal e digite:
