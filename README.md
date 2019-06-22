@@ -12,7 +12,7 @@
   <li> sqlLite3 </li>
  </ul>
  
- <ul>Funcionalidades 
+ <ul><h5>Funcionalidades</h5> 
     <ul>
     Anfitrião
       <ul>
@@ -27,6 +27,7 @@
       <ul>
         <li> Ver postagem dos locais </li>
         <li> Solicitar local </li>
+        <li> Filtrar locais pela cidade </li>
       </ul>
     </ul>
   </ul>
