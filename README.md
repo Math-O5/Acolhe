@@ -1,14 +1,15 @@
-<h1>poo-acolhe</h1>
-Orientação a Objetos com Python (Projeto Acolhe)
+<h1>poo-acolhe</h1> <h5>Orientação a Objetos com Python (Projeto Acolhe)</h5>
 
 - Descrição
   Essa plataforma é um lugar onde você pode ajudar pessoas que ficaram desabrigadas por algum motivo, ou se você precisa de
   abrigo por algum motivo, tal como estar localizado em zona de risco, pode procurar essas pessoas/instituições que se disporam a ajudar.
   
  <h2>Dependencias</h2>
- - python >3
- - django >2.1
- - crispy_forms
+ <ul>
+  <li> python >3</li>
+  <li> django >2.1 >3</li>
+  <li> crispy_forms >3</li>
+ </ul>
  
 -Execução
 
