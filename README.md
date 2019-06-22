@@ -3,7 +3,7 @@
 - Descrição
   Essa plataforma é um lugar onde você pode ajudar pessoas que ficaram desabrigadas por algum motivo, ou se você precisa de
   abrigo por algum motivo, tal como estar localizado em zona de risco, pode procurar essas pessoas/instituições que se disporam a ajudar.
-  
+  Você também pode ajudar pessoas oferecendo um local temporario para elas ficarem. Basta se cadastrar e fazer uma publicação.
  <h2>Dependencias</h2>
  <ul>
   <li> python > 3</li>
@@ -12,6 +12,16 @@
   <li> sqlLite3 </li>
  </ul>
  
+ - Funcionalidades
+  -- Anfitrião
+    - Postar, Editar, Ver, Excluir locais
+    - Aprovar solicitação de um usuario que queira alojamento no local.
+    - upload de fotos
+    - comentário
+  -- Acolhido
+    - Ver postagem dos locais
+    - Solicitar local
+   
 -Execução
 
 Para iniciar o servidor e ver a aplicação em execução, acesse a página do projeto via terminal e digite:
